@@ -22,6 +22,21 @@ listeners.dp_graphite.bucket = graphite
 listeners.dp_graphite.port = 2003
 ```
 
+### Note (Graphite Optional Extras):
+
+You can optionally include tags on Graphite metrics by including an = sign in a segment. This segment will be handled as a key value pair for a tag.
+
+Ordering is important! Example:
+
+`a.tag1=value.tag2=value` and `a.tag2=value.tag1=value` are different metrics!
+
+Metadata is supported by inserting an 'empty'. Example:
+
+`segment.so a.tag=value..metadata=value` and `a.tag=value..metadata=other_value` will end up in the same metric just change the value of metadata.
+
+When using tags the base of the metric has to be provided first, followed by tags, so in the example above a would be the base metric.
+
+
 ## Metrics 2.0
 
 Enable the Metrics 2.0 listener with the following config lines.
